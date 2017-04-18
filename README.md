@@ -27,4 +27,3 @@ Lancer le jar, la main classe est com.poleemploi.javanais
 - Faire un assembly
 - Faire attention à la complexité des méthodes
 - gérer la dernière ligne dans le fichier résultat
-- gérer les accents
