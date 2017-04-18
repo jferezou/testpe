@@ -15,7 +15,7 @@ Lancer le jar, la main classe est com.poleemploi.javanais
 
 *java -cp {emplacementdu jar}/javanais-1.0.0-0-jar-with-dependencies.jar com.poleemploi.Javanais*
 
-# hypothèse
+# Hypothèses
 - un mot qui commence par une voyelle en début de ligne fait partie du traitement
 - les accents sont des voyelles : é è ê à ô ù
 
