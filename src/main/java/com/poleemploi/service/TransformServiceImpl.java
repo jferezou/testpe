@@ -20,6 +20,9 @@ public class TransformServiceImpl implements TransformService{
 	 private List<Character> consonnes;
 		
 	@Override
+	/**
+	 * Permet de convertir du texte vers le javanais
+	 */
 	public String convertToJavanais(final String line) {
 		LOGGER.debug("Début conversion vers javanais");
 		LOGGER.debug("Mot a ajouter : {}",this.javanaisValue);
@@ -57,6 +60,9 @@ public class TransformServiceImpl implements TransformService{
 	}
 
 	@Override
+	/**
+	 * Permet de convertir du texte du javanais vers la langue normale
+	 */
 	public String convertFromJavanais(final String line) {
 		LOGGER.debug("Début conversion du javanais");
 		LOGGER.debug("Mot a ajouter : {}",this.javanaisValue);
@@ -67,6 +73,7 @@ public class TransformServiceImpl implements TransformService{
 		StringBuilder strB = new StringBuilder();
 		// si la ligne est vide, il n'y a rien à faire !
 		if(!line.isEmpty()) {
+			// TODO à finir
 			String[] lineTab = line.split(this.javanaisValue);
 			
 		}
@@ -75,5 +82,6 @@ public class TransformServiceImpl implements TransformService{
 		return lineResult;
 	}
 
+	
 
 }
