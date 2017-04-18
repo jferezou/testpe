@@ -73,9 +73,23 @@ public class TransformServiceImpl implements TransformService{
 		StringBuilder strB = new StringBuilder();
 		// si la ligne est vide, il n'y a rien à faire !
 		if(!line.isEmpty()) {
-			// TODO à finir
 			String[] lineTab = line.split(this.javanaisValue);
+			for(int i =0; i< lineTab.length - 1; i++) {
+				String debut = lineTab[i];
+				if(!debut.isEmpty()) {
+					String fin = lineTab[i+1];
+					boolean dernierEstConsonneOuEspace = this.consonnes.contains(debut.charAt(debut.length()-1));
+					boolean permierEstVoyelle = this.voyelles.contains(fin.charAt(0));
+	
+					strB.append(debut);
+					if(!(dernierEstConsonneOuEspace && permierEstVoyelle)) {
+						strB.append(this.javanaisValue);
+					}
+				}
+			}
 			
+			// on ajoute toujours le dernier élément
+			strB.append(lineTab[lineTab.length - 1]);
 		}
 		String lineResult = strB.toString();
 		LOGGER.debug("Fin conversion du javanais : {}", lineResult);

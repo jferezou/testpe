@@ -23,6 +23,20 @@ public class TransformServiceTest {
 		assertThat(this.transformService.convertToJavanais("exemple")).isEqualTo("avexavemplave");
 		assertThat(this.transformService.convertToJavanais("au")).isEqualTo("avau");
 	}
+
 	
+	@Test
+	public void testFromJavanais() {
+		assertThat(this.transformService.convertFromJavanais("bavonjavour")).isEqualTo("bonjour");
+		assertThat(this.transformService.convertFromJavanais("chavantave")).isEqualTo("chante");
+		assertThat(this.transformService.convertFromJavanais("mavoyen")).isEqualTo("moyen");
+		assertThat(this.transformService.convertFromJavanais("avexavemplave")).isEqualTo("exemple");
+		assertThat(this.transformService.convertFromJavanais("avau")).isEqualTo("au");
+		assertThat(this.transformService.convertFromJavanais("avoir")).isEqualTo("oir");
+		assertThat(this.transformService.convertFromJavanais("aava")).isEqualTo("aava");
+		assertThat(this.transformService.convertFromJavanais("eavi")).isEqualTo("eavi");
+		assertThat(this.transformService.convertFromJavanais(" avi")).isEqualTo(" i");
+		assertThat(this.transformService.convertFromJavanais(" avh")).isEqualTo(" avh");
+	}
 
 }

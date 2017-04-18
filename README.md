@@ -3,7 +3,7 @@
 
 Récupérer le projet et mettre à jour le fichier config.properties avec :
 - Le fichier à lire
-- Le fihcier résultat
+- Le fichier résultat
 
 Eventuellement ajuster les informations dans le dictionnary.properties
 
@@ -18,7 +18,8 @@ Lancer le jar, la main classe est com.poleemploi.javanais
 
 
 ## RAF
-- Faire les TU
-- Faire l'implémentation de l'algo pour la transformation inverse
+- Faire les TU + poussés
+- Faire l'implémentation de l'algo pour la transformation inverse avec gestion des mots corrects (verbe avoir ....)
 - Tester l'encodage des charactères en UTF-8
 - Faire un assembly
+- Faire attention à la complexité des méthodes
