@@ -15,6 +15,9 @@ Lancer le jar, la main classe est com.poleemploi.javanais
 
 *java -cp {emplacementdu jar}/javanais-1.0.0-0-jar-with-dependencies.jar com.poleemploi.Javanais*
 
+# hypothèse
+- un mot qui commence par une voyelle en début de ligne fait partie du traitement
+- les accents sont des voyelles : é è ê à
 
 
 ## RAF
@@ -23,3 +26,6 @@ Lancer le jar, la main classe est com.poleemploi.javanais
 - Tester l'encodage des charactères en UTF-8
 - Faire un assembly
 - Faire attention à la complexité des méthodes
+- gérer la dernière ligne dans le fichier résultat
+- gérer les accents
+-

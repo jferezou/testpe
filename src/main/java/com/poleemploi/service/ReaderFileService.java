@@ -4,6 +4,7 @@ import java.io.IOException;
 import org.apache.tika.exception.TikaException;
 import com.poleemploi.exception.FichierInvalideException;
 
+@FunctionalInterface
 public interface ReaderFileService {
 
 	/**

@@ -37,22 +37,28 @@ public class TransformServiceImpl implements TransformService{
 				strB.append(this.javanaisValue);
 			}
 			
-			// le caractère précédant est une consonne ou un espace
-			boolean consonneOuEspace = false;
-			for (int i = 0 ; i < line.length() ;i++){
-				char charAt = line.charAt(i);
-				if(this.consonnes.contains(charAt)) {
+			
+			for (int i = 0 ; i < line.length() - 1;i++){
+				boolean consonneOuEspace = false;
+				char caractereEnCours = line.charAt(i);
+				char caractereSuivant = line.charAt(i + 1);
+				
+				// on ajoute le caractère en cours
+				strB.append(caractereEnCours);
+				
+				// le caractère est une consonne ou un espace
+				if(this.consonnes.contains(caractereEnCours)) {
 					consonneOuEspace = true;
 				}
-				// si le caractère précédant est une consonne ou espace et le suivant une voyelle, on ajoute le mot
-				if(consonneOuEspace && this.voyelles.contains(charAt)) {
+				// si le caractère suivant est une consonne ou espace et le suivant une voyelle, on ajoute le mot
+				boolean isVoyelle = this.voyelles.contains(caractereSuivant);
+				if(consonneOuEspace && isVoyelle) {
 					strB.append(this.javanaisValue);
 					consonneOuEspace = false;
-				}
-				
-				// on ajoute le caractère
-				strB.append(charAt);
+				}	
 			}
+			// on ajoute le dernier caractère
+			strB.append(line.substring(line.length() - 1));
 		}
 		String lineResult = strB.toString();
 		LOGGER.debug("Fin conversion vers javanais : {}", lineResult);
@@ -76,8 +82,8 @@ public class TransformServiceImpl implements TransformService{
 			String[] lineTab = line.split(this.javanaisValue);
 			for(int i =0; i< lineTab.length - 1; i++) {
 				String debut = lineTab[i];
-				if(!debut.isEmpty()) {
-					String fin = lineTab[i+1];
+				String fin = lineTab[i+1];
+				if(!debut.isEmpty() && !fin.isEmpty()) {
 					boolean dernierEstConsonneOuEspace = this.consonnes.contains(debut.charAt(debut.length()-1));
 					boolean permierEstVoyelle = this.voyelles.contains(fin.charAt(0));
 	

@@ -17,11 +17,19 @@ public class TransformServiceTest {
 	
 	@Test
 	public void testVersJavanais() {
+		assertThat(this.transformService.convertToJavanais("c'est")).isEqualTo("c'est");
 		assertThat(this.transformService.convertToJavanais("bonjour")).isEqualTo("bavonjavour");
 		assertThat(this.transformService.convertToJavanais("chante")).isEqualTo("chavantave");
 		assertThat(this.transformService.convertToJavanais("moyen")).isEqualTo("mavoyen");
 		assertThat(this.transformService.convertToJavanais("exemple")).isEqualTo("avexavemplave");
 		assertThat(this.transformService.convertToJavanais("au")).isEqualTo("avau");
+		assertThat(this.transformService.convertToJavanais("éu")).isEqualTo("avéu");
+		assertThat(this.transformService.convertToJavanais("èu")).isEqualTo("avèu");
+		assertThat(this.transformService.convertToJavanais("êu")).isEqualTo("avêu");
+		assertThat(this.transformService.convertToJavanais("àu")).isEqualTo("avàu");
+		assertThat(this.transformService.convertToJavanais("ôu")).isEqualTo("avôu");
+		assertThat(this.transformService.convertToJavanais("ùu")).isEqualTo("avùu");
+		assertThat(this.transformService.convertToJavanais("çu")).isEqualTo("çavu");
 	}
 
 	
@@ -37,6 +45,15 @@ public class TransformServiceTest {
 		assertThat(this.transformService.convertFromJavanais("eavi")).isEqualTo("eavi");
 		assertThat(this.transformService.convertFromJavanais(" avi")).isEqualTo(" i");
 		assertThat(this.transformService.convertFromJavanais(" avh")).isEqualTo(" avh");
+		assertThat(this.transformService.convertFromJavanais("c'avest")).isEqualTo("c'avest");
+		assertThat(this.transformService.convertFromJavanais(" avé")).isEqualTo(" é");
+		assertThat(this.transformService.convertFromJavanais(" avè")).isEqualTo(" è");
+		assertThat(this.transformService.convertFromJavanais(" avê")).isEqualTo(" ê");
+		assertThat(this.transformService.convertFromJavanais(" avà")).isEqualTo(" à");
+		assertThat(this.transformService.convertFromJavanais(" avô")).isEqualTo(" ô");
+		assertThat(this.transformService.convertFromJavanais(" avù")).isEqualTo(" ù");
+		assertThat(this.transformService.convertFromJavanais(" avà")).isEqualTo(" à");
+		assertThat(this.transformService.convertFromJavanais(" avç")).isEqualTo(" avç");
 	}
 
 }

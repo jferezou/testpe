@@ -17,8 +17,12 @@ import com.poleemploi.service.ReaderFileServiceImpl;
  *
  */
 public class Javanais {
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(Javanais.class);
+
+	private Javanais(){
+		
+	}
+	
 	public static void main(String[] args) {
 		Date debut = new Date();
 		LOGGER.info("Debut traitement");

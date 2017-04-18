@@ -144,8 +144,7 @@ public class ReaderFileServiceImpl implements ReaderFileService {
 		TikaConfig tika = new TikaConfig();
 		Metadata metadata = new Metadata();
 		metadata.set(Metadata.RESOURCE_NAME_KEY, fileName);
-		MediaType mimetype = tika.getDetector().detect(stream, metadata);
-		return mimetype;
+		return tika.getDetector().detect(stream, metadata);
 	}
 
 }
