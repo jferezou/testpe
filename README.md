@@ -17,7 +17,7 @@ Lancer le jar, la main classe est com.poleemploi.javanais
 
 # hypothèse
 - un mot qui commence par une voyelle en début de ligne fait partie du traitement
-- les accents sont des voyelles : é è ê à
+- les accents sont des voyelles : é è ê à ô ù
 
 
 ## RAF
@@ -28,4 +28,3 @@ Lancer le jar, la main classe est com.poleemploi.javanais
 - Faire attention à la complexité des méthodes
 - gérer la dernière ligne dans le fichier résultat
 - gérer les accents
--
