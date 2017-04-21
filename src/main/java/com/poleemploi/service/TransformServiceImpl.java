@@ -5,8 +5,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("transformService")
+@Transactional(propagation=Propagation.REQUIRES_NEW, isolation=Isolation.READ_COMMITTED, readOnly=false)
 public class TransformServiceImpl implements TransformService{
 	private static final Logger LOGGER = LoggerFactory.getLogger(TransformServiceImpl.class);
 	
@@ -66,6 +70,7 @@ public class TransformServiceImpl implements TransformService{
 	}
 
 	@Override
+	@Transactional
 	/**
 	 * Permet de convertir du texte du javanais vers la langue normale
 	 */

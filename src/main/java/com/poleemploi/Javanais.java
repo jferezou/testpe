@@ -5,7 +5,6 @@ import java.util.Date;
 import org.apache.tika.exception.TikaException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import com.poleemploi.exception.FichierInvalideException;
 import com.poleemploi.service.ReaderFileService;
@@ -24,12 +23,16 @@ public class Javanais {
 	}
 	
 	public static void main(String[] args) {
+		new SpringRunner(Javanais.class, AppConfig.class).run(args);
+	}
+
+	
+	public void run(String[] args, AnnotationConfigApplicationContext context) {
 		Date debut = new Date();
 		LOGGER.info("Debut traitement");
 		try {
 			//chargement contexte spring
-			ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-			ReaderFileService reader = applicationContext.getBean(ReaderFileServiceImpl.class);
+			ReaderFileService reader = context.getBean(ReaderFileServiceImpl.class);
 			reader.readAndLaunch();
 		}
 		catch(FichierInvalideException | TikaException | IOException e) {
@@ -37,6 +40,6 @@ public class Javanais {
 		}
 		Date fin = new Date();
 		LOGGER.info("Fin traitement en : {} ms", fin.getTime() - debut.getTime() );
+		
 	}
-
 }
