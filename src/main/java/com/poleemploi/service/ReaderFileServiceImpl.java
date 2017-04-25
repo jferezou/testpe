@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.apache.tika.config.TikaConfig;
@@ -85,17 +85,19 @@ public class ReaderFileServiceImpl implements ReaderFileService {
 	 */
 	private void multiThreaded(File file) throws IOException {
 
-		try (final FileWriter fw = new FileWriter(this.fichierResultat); final BufferedWriter bw = new BufferedWriter(fw);) {
+		Function<String, String> myfunction;
 
-			List<String> list = Files.readAllLines(Paths.get(file.getPath()));
-			List<String> lineResult = new ArrayList<>();
-			if (this.convertirVersJavanais) {
-				lineResult = IntStream.range(0, list.size()).mapToObj(i -> this.transformService.convertToJavanais(list.get(i))).parallel()
-						.collect(Collectors.toList());
-			} else {
-				lineResult = IntStream.range(0, list.size()).mapToObj(i -> this.transformService.convertFromJavanais(list.get(i))).parallel()
-						.collect(Collectors.toList());
-			}
+		if (this.convertirVersJavanais) {
+			myfunction = (a -> this.transformService.convertToJavanais(a));
+		} else {
+			myfunction = (a -> this.transformService.convertFromJavanais(a));
+		}
+
+		List<String> list = Files.readAllLines(Paths.get(file.getPath()));
+		List<String> lineResult = IntStream.range(0, list.size()).parallel().mapToObj(i -> myfunction.apply(list.get(i))).collect(Collectors.toList());		
+		
+		try (final FileWriter fw = new FileWriter(this.fichierResultat); final BufferedWriter bw = new BufferedWriter(fw);) {
+	
 			// on écrit les résultats dans le fichier
 			for (String cpt : lineResult) {
 				bw.append(cpt);
