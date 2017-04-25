@@ -28,7 +28,7 @@ public class TransformServiceImpl implements TransformService{
 	 * Permet de convertir du texte vers le javanais
 	 */
 	public String convertToJavanais(final String line) {
-		LOGGER.debug("Début conversion vers javanais");
+		LOGGER.info("Début conversion vers javanais");
 		LOGGER.debug("Mot a ajouter : {}",this.javanaisValue);
 		LOGGER.debug("Liste voyelles : {}",this.voyelles);
 		LOGGER.debug("Liste consonnes : {}",this.consonnes);
@@ -66,6 +66,7 @@ public class TransformServiceImpl implements TransformService{
 		}
 		String lineResult = strB.toString();
 		LOGGER.debug("Fin conversion vers javanais : {}", lineResult);
+		LOGGER.info("Fin conversion vers javanais");
 		return lineResult;
 	}
 
