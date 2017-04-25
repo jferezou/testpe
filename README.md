@@ -11,9 +11,9 @@ Mettre à jour le logback.xml si besoin
 
 Faire un *mvn clean install*
 
-Lancer le jar, la main classe est com.poleemploi.javanais
+Lancer le jar, la main classe est com.algo.javanais
 
-*java -cp {emplacementdu jar}/javanais-1.0.0-0-jar-with-dependencies.jar com.poleemploi.Javanais*
+*java -cp {emplacementdu jar}/javanais-1.0.0-0-jar-with-dependencies.jar com.algo.Javanais*
 
 # Hypothèses
 - un mot qui commence par une voyelle en début de ligne fait partie du traitement

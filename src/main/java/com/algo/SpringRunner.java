@@ -1,4 +1,4 @@
-package com.poleemploi;
+package com.algo;
 
 
 import java.lang.reflect.InvocationTargetException;

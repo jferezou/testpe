@@ -8,7 +8,7 @@
     </encoder>
   </appender>
 
-  <logger name="com.poleemploi" level="INFO" additivity="false">
+  <logger name="com.algo" level="INFO" additivity="false">
    <appender-ref ref="STDOUT" />
   </logger>
 
